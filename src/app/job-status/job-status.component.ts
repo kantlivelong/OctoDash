@@ -34,10 +34,6 @@ export class JobStatusComponent implements OnInit, OnDestroy {
         return this.service.getLoadedFile();
     }
 
-    public isPreheatEnabled(): boolean {
-        return this.configService.isPreheatPluginEnabled();
-    }
-
     public preheat(): void {
         this.jobService.preheat();
     }

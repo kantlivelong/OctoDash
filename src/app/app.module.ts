@@ -17,14 +17,11 @@ import { ConfigService } from './config/config.service';
 import { InvalidConfigComponent } from './config/invalid-config/invalid-config.component';
 import { NoConfigComponent } from './config/no-config/no-config.component';
 import { ControlComponent } from './control/control.component';
-import { FilamentComponent } from './filament/filament.component';
 import { FilesComponent } from './files/files.component';
 import { JobStatusComponent } from './job-status/job-status.component';
 import { JobService } from './job.service';
-import { LayerProgressComponent } from './layer-progress/layer-progress.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
-import { MainScreenNoTouchComponent } from './main-screen/no-touch/main-screen-no-touch.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationService } from './notification/notification.service';
 import { PrintControlComponent } from './print-control/print-control.component';
@@ -40,7 +37,6 @@ import { URLSafePipe } from './url.pipe';
         BottomBarComponent,
         PrinterStatusComponent,
         JobStatusComponent,
-        LayerProgressComponent,
         InvalidConfigComponent,
         NoConfigComponent,
         PrintControlComponent,
@@ -48,8 +44,6 @@ import { URLSafePipe } from './url.pipe';
         MainMenuComponent,
         ControlComponent,
         MainScreenComponent,
-        MainScreenNoTouchComponent,
-        FilamentComponent,
         FilesComponent,
         SettingsComponent,
         URLSafePipe,

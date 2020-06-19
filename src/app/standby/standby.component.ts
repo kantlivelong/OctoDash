@@ -6,7 +6,6 @@ import { AppService } from '../app.service';
 import { ConfigService } from '../config/config.service';
 import { NotificationService } from '../notification/notification.service';
 import { OctoprintConnectionAPI } from '../octoprint-api/connectionAPI';
-import { PsuControlService } from '../plugin-service/psu-control.service';
 
 @Component({
     selector: 'app-standby',
@@ -23,8 +22,7 @@ export class StandbyComponent implements OnInit {
         private http: HttpClient,
         private router: Router,
         private service: AppService,
-        private notificationService: NotificationService,
-        private psuControlService: PsuControlService,
+        private notificationService: NotificationService
     ) {}
 
     public ngOnInit(): void {
@@ -34,13 +32,7 @@ export class StandbyComponent implements OnInit {
     }
 
     public reconnect(): void {
-        this.connecting = true;
-        if (this.configService.turnOnPSUWhenExitingSleep()) {
-            this.psuControlService.changePSUState(true);
-            setTimeout(this.checkConnection.bind(this), 5000);
-        } else {
-            this.checkConnection();
-        }
+        this.checkConnection();
     }
 
     private connectToPrinter(): void {

@@ -12,9 +12,6 @@
                         OctoDash <fa-icon [icon]="['fas', 'chevron-right']"></fa-icon>
                     </li>
                     <li (click)="changePage(3, 0, 'forward')">
-                        Plugins <fa-icon [icon]="['fas', 'chevron-right']"></fa-icon>
-                    </li>
-                    <li (click)="changePage(4, 0, 'forward')">
                         Credits <fa-icon [icon]="['fas', 'chevron-right']"></fa-icon>
                     </li>
                 </ul>
@@ -43,105 +40,6 @@
                         <input type="text" id="accessToken" class="settings__input" name="accessToken"
                             style="width: 44.94vw" [(ngModel)]="this.config.octoprint.accessToken" required>
                     </form>
-                    <span class="settings__heading-2">Printer</span>
-                    <form class="settings__form">
-                        <label for="printerName" class="settings__input-label">Name</label>
-                        <input type="text" id="printerName" class="settings__input" name="printerName"
-                            style="width: 44.94vw" [(ngModel)]="config.printer.name" required>
-                        <table>
-                            <tr>
-                                <td style="width: 25.6vw; display: block">
-                                    <label for="xySpeed" class="settings__input-label">XY-Speed
-                                        <span>(mm/s)</span></label>
-                                    <input type="number" id="xySpeed" class="settings__input" name="xySpeed"
-                                        style="width: 19vw" [(ngModel)]="config.printer.xySpeed" required>
-                                </td>
-                                <td>
-                                    <label for="zSpeed" class="settings__input-label">Z-Speed
-                                        <span>(mm/s)</span></label>
-                                    <input type="number" id="zSpeed" class="settings__input" name="zSpeed"
-                                        style="width: 19vw" [(ngModel)]="config.printer.zSpeed" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="settings__sub-heading">Default Temperatures & Fan Speed</td>
-                            </tr>
-                            <tr>
-                                <td style="width: 25.6vw; display: block">
-                                    <label for="defaultHotendTemperature" class="settings__input-label">Hotend
-                                        <span>(°C)</span></label>
-                                    <input type="number" id="defaultHotendTemperature" class="settings__input"
-                                        name="defaultHotendTemperature" style="width: 19vw"
-                                        [(ngModel)]="config.printer.defaultTemperatureFanSpeed.hotend" required>
-                                </td>
-                                <td>
-                                    <label for="defaultHeatbedTemperature" class="settings__input-label">Heatbed
-                                        <span>(°C)</span></label>
-                                    <input type="number" id="defaultHeatbedTemperature" class="settings__input"
-                                        name="defaultHeatbedTemperature" style="width: 19vw"
-                                        [(ngModel)]="config.printer.defaultTemperatureFanSpeed.heatbed" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 25.6vw; display: block">
-                                    <label for="defaultFanSpeed" class="settings__input-label">Fan Speed
-                                        <span>(%)</span></label>
-                                    <input type="number" id="defaultFanSpeed" class="settings__input"
-                                        name="defaultFanSpeed" style="width: 19vw"
-                                        [(ngModel)]="config.printer.defaultTemperatureFanSpeed.fan" required>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-                    <span class="settings__heading-2">Filament</span>
-                    <form class="settings__form">
-                        <table>
-                            <tr>
-                                <td style="width: 25.6vw; display: block">
-                                    <label for="filament-thickness" class="settings__input-label">Thickness
-                                        <span>(mm)</span></label>
-                                    <input type="number" id="filament-thickness" class="settings__input"
-                                        name="filament-thickness" style="width: 19vw"
-                                        [(ngModel)]="config.filament.thickness" required>
-                                </td>
-                                <td>
-                                    <label for="filament-density" class="settings__input-label">Density
-                                        <span>(g/cm³)</span></label>
-                                    <input type="number" id="filament-density" class="settings__input"
-                                        name="filament-density" style="width: 19vw"
-                                        [(ngModel)]="config.filament.density" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 25.6vw; display: block">
-                                    <label for="filament-feed-length" class="settings__input-label">Feed Length
-                                        <span>(mm)</span></label>
-                                    <input type="number" id="filament-feed-length" class="settings__input"
-                                        name="filament-feed-length" style="width: 19vw"
-                                        [(ngModel)]="config.filament.feedLength" required>
-                                </td>
-                                <td>
-                                    <label for="filament-feed-speed" class="settings__input-label">Feed Speed
-                                        <span>(mm/s)</span></label>
-                                    <input type="number" id="filament-feed-speed" class="settings__input"
-                                        name="filament-feed-speed" style="width: 19vw"
-                                        [(ngModel)]="config.filament.feedSpeed" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 25.6vw; display: block">
-                                    <label for="filament-feed-speed-slow" class="settings__input-label">Feed Speed Slow
-                                        <span>(mm/s)</span></label>
-                                    <input type="number" id="filament-feed-speed-slow" class="settings__input"
-                                        name="filament-feed-speed-slow" style="width: 19vw"
-                                        [(ngModel)]="config.filament.feedSpeedSlow" required>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="filament-feed-speed-info">Please set these values carefully, as they possibly
-                            can destroy parts of your printer, just don't set your Feed Speed to high and your Feed
-                            Length to long.</div>
-                    </form>
                     <br>
                 </div>
             </div>
@@ -155,12 +53,6 @@
                         <span>(ms)</span></label>
                     <input type="number" id="api-polling-interval" class="settings__input" name="api-polling-interval"
                         style="width: 44.94vw" [(ngModel)]="config.octodash.pollingInterval" required>
-                    <div class="settings__checkbox-container"
-                        (click)="config.octodash.touchscreen = !config.octodash.touchscreen">
-                        <span class="settings__checkbox">
-                            <span class="settings__checkbox-checked" *ngIf="config.octodash.touchscreen"></span>
-                        </span> <span class="settings__checkbox-descriptor">Use Touchscreen</span>
-                    </div> <br>
                     <div class="settings__checkbox-container"
                         (click)="config.octodash.turnScreenOffWhileSleeping = !config.octodash.turnScreenOffWhileSleeping">
                         <span class="settings__checkbox">
@@ -264,71 +156,6 @@
                     </div> <br>
                 </div>
             </div>
-            <div class="settings__content settings__content-inactive" #settingsPlugins>
-                <span class="settings__heading" (click)="changePage(0, 3, 'backward')">
-                    <fa-icon [icon]="['fas', 'chevron-left']" class="settings__heading-back"> </fa-icon>plugins
-                </span>
-                <div class="settings__scroll">
-                    <span class="settings__heading-2">Display Layer Progress</span>
-                    <div class="settings__checkbox-container"
-                        (click)="config.plugins.displayLayerProgress.enabled = true">
-                        <span class="settings__checkbox">
-                            <span class="settings__checkbox-checked settings__checkbox-checked-disabled"
-                                *ngIf="config.plugins.displayLayerProgress.enabled"></span>
-                        </span> <span class="settings__checkbox-descriptor">enabled</span>
-                    </div>
-                    <span class="settings__heading-2">Enclosure</span>
-                    <div class="settings__checkbox-container"
-                        (click)="config.plugins.enclosure.enabled = !config.plugins.enclosure.enabled">
-                        <span class="settings__checkbox">
-                            <span class="settings__checkbox-checked" *ngIf="config.plugins.enclosure.enabled"></span>
-                        </span> <span class="settings__checkbox-descriptor">enabled</span>
-                    </div>
-                    <label for="enclosure-ambient-id" class="settings__input-label">Ambient Sensor
-                        <span>(ID)</span></label>
-                    <input type="number" id="enclosure-ambient-id" class="settings__input" name="enclosure-ambient-id"
-                        style="width: 44.94vw" [(ngModel)]="config.plugins.enclosure.ambientSensorID" required>
-
-                    <span class="settings__heading-2">Filament Manager</span>
-                    <div class="settings__checkbox-container"
-                        (click)="config.plugins.filamentManager.enabled = !config.plugins.filamentManager.enabled">
-                        <span class="settings__checkbox">
-                            <span class="settings__checkbox-checked"
-                                *ngIf="config.plugins.filamentManager.enabled"></span>
-                        </span> <span class="settings__checkbox-descriptor">enabled</span>
-                    </div>
-                    <span class="settings__heading-2">Preheat Button</span>
-                    <div class="settings__checkbox-container"
-                        (click)="config.plugins.preheatButton.enabled = !config.plugins.preheatButton.enabled">
-                        <span class="settings__checkbox ">
-                            <span class="settings__checkbox-checked"
-                                *ngIf="config.plugins.preheatButton.enabled"></span>
-                        </span> <span class="settings__checkbox-descriptor">enabled</span>
-                    </div>
-                    <span class="settings__heading-2">Print Time Genius</span>
-                    <div class="settings__checkbox-container"
-                        (click)="config.plugins.printTimeGenius.enabled = !config.plugins.printTimeGenius.enabled">
-                        <span class="settings__checkbox">
-                            <span class="settings__checkbox-checked"
-                                *ngIf="config.plugins.printTimeGenius.enabled"></span>
-                        </span> <span class="settings__checkbox-descriptor">enabled</span>
-                    </div>
-                    <span class="settings__heading-2">PSU Control</span>
-                    <div class="settings__checkbox-container"
-                        (click)="config.plugins.psuControl.enabled = !config.plugins.psuControl.enabled">
-                        <span class="settings__checkbox">
-                            <span class="settings__checkbox-checked" *ngIf="config.plugins.psuControl.enabled"></span>
-                        </span> <span class="settings__checkbox-descriptor">enabled</span>
-                    </div>
-                    <div class="settings__checkbox-container"
-                        (click)="config.plugins.psuControl.turnOnPSUWhenExitingSleep = !config.plugins.psuControl.turnOnPSUWhenExitingSleep">
-                        <span class="settings__checkbox">
-                            <span class="settings__checkbox-checked"
-                                *ngIf="config.plugins.psuControl.turnOnPSUWhenExitingSleep"></span>
-                        </span> <span class="settings__checkbox-descriptor">Turn on PSU when exiting sleep</span>
-                    </div>
-                </div>
-            </div>
             <div class="settings__content settings__content-inactive" #settingsCredits>
                 <span class="settings__heading" (click)="changePage(0, 4, 'backward')">
                     <fa-icon [icon]="['fas', 'chevron-left']" class="settings__heading-back"> </fa-icon>credits
@@ -381,3 +208,4 @@
             </div>
         </div>
     </div>
+settings__files

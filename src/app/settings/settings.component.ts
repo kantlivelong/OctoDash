@@ -14,7 +14,6 @@ export class SettingsComponent implements OnInit {
     @ViewChild('settingsMain') private settingsMain: ElementRef;
     @ViewChild('settingsGeneral') private settingsGeneral: ElementRef;
     @ViewChild('settingsOctoDash') private settingsOctoDash: ElementRef;
-    @ViewChild('settingsPlugins') private settingsPlugins: ElementRef;
     @ViewChild('settingsCredits') private settingsCredits: ElementRef;
 
     public fadeOutAnimation = false;
@@ -66,7 +65,6 @@ export class SettingsComponent implements OnInit {
                 this.settingsMain.nativeElement,
                 this.settingsGeneral.nativeElement,
                 this.settingsOctoDash.nativeElement,
-                this.settingsPlugins.nativeElement,
                 this.settingsCredits.nativeElement,
             ];
         }, 400);

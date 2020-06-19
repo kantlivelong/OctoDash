@@ -11,7 +11,7 @@ import { Config, ConfigService } from '../config.service';
 })
 export class NoConfigComponent implements OnInit {
     public page = 0;
-    public totalPages = 6;
+    public totalPages = 5;
 
     private configUpdate: boolean;
     public config: Config;
@@ -50,30 +50,6 @@ export class NoConfigComponent implements OnInit {
                     feedSpeed: 30,
                     feedSpeedSlow: 3,
                     purgeDistance: 30,
-                },
-                plugins: {
-                    displayLayerProgress: {
-                        enabled: true,
-                    },
-                    enclosure: {
-                        enabled: false,
-                        ambientSensorID: null,
-                        filament1SensorID: null,
-                        filament2SensorID: null,
-                    },
-                    filamentManager: {
-                        enabled: true,
-                    },
-                    preheatButton: {
-                        enabled: true,
-                    },
-                    printTimeGenius: {
-                        enabled: true,
-                    },
-                    psuControl: {
-                        enabled: false,
-                        turnOnPSUWhenExitingSleep: false,
-                    },
                 },
                 octodash: {
                     customActions: [
@@ -125,7 +101,6 @@ export class NoConfigComponent implements OnInit {
                         order: 'asc',
                     },
                     pollingInterval: 2000,
-                    touchscreen: true,
                     turnScreenOffWhileSleeping: false,
                 },
             };

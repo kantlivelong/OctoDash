@@ -189,20 +189,8 @@ export class ConfigService {
         return this.update;
     }
 
-    public isTouchscreen(): boolean {
-        return this.config.octodash.touchscreen;
-    }
-
-    public getAmbientTemperatureSensorName(): number {
-        return this.config.plugins.enclosure.ambientSensorID;
-    }
-
     public getAutomaticScreenSleep(): boolean {
         return this.config.octodash.turnScreenOffWhileSleeping;
-    }
-
-    public turnOnPSUWhenExitingSleep(): boolean {
-        return this.config.plugins.psuControl.turnOnPSUWhenExitingSleep;
     }
 
     public getFilamentThickness(): number {
@@ -233,14 +221,6 @@ export class ConfigService {
         return this.config.printer.defaultTemperatureFanSpeed.fan;
     }
 
-    public isPreheatPluginEnabled(): boolean {
-        return this.config.plugins.preheatButton.enabled;
-    }
-
-    public isFilamentManagerEnabled(): boolean {
-        return this.config.plugins.filamentManager.enabled;
-    }
-
     public getFeedLength(): number {
         return this.config.filament.feedLength;
     }
@@ -262,7 +242,6 @@ export interface Config {
     octoprint: Octoprint;
     printer: Printer;
     filament: Filament;
-    plugins: Plugins;
     octodash: OctoDash;
 }
 
@@ -297,15 +276,6 @@ interface Filament {
     purgeDistance: number;
 }
 
-interface Plugins {
-    displayLayerProgress: Plugin;
-    enclosure: EnclosurePlugin;
-    filamentManager: Plugin;
-    preheatButton: Plugin;
-    printTimeGenius: Plugin;
-    psuControl: PSUControlPlugin;
-}
-
 interface Plugin {
     enabled: boolean;
 }
@@ -324,7 +294,6 @@ interface OctoDash {
     customActions: CustomAction[];
     fileSorting: FileSorting;
     pollingInterval: number;
-    touchscreen: boolean;
     turnScreenOffWhileSleeping: boolean;
 }
 
@@ -346,7 +315,7 @@ const schema = {
     $schema: 'http://json-schema.org/draft-07/schema#',
     $id: 'http://example.com/root.json',
     type: 'object',
-    required: ['octoprint', 'printer', 'filament', 'plugins', 'octodash'],
+    required: ['octoprint', 'printer', 'filament', 'octodash'],
     properties: {
         octoprint: {
             $id: '#/properties/octoprint',
@@ -435,109 +404,10 @@ const schema = {
                 },
             },
         },
-        plugins: {
-            $id: '#/properties/plugins',
-            type: 'object',
-            required: [
-                'displayLayerProgress',
-                'enclosure',
-                'filamentManager',
-                'preheatButton',
-                'printTimeGenius',
-                'psuControl',
-            ],
-            properties: {
-                displayLayerProgress: {
-                    $id: '#/properties/plugins/properties/displayLayerProgress',
-                    type: 'object',
-                    required: ['enabled'],
-                    properties: {
-                        enabled: {
-                            $id: '#/properties/plugins/properties/displayLayerProgress/properties/enabled',
-                            type: 'boolean',
-                        },
-                    },
-                },
-                enclosure: {
-                    $id: '#/properties/plugins/properties/enclosure',
-                    type: 'object',
-                    required: ['enabled', 'ambientSensorID', 'filament1SensorID', 'filament2SensorID'],
-                    properties: {
-                        enabled: {
-                            $id: '#/properties/plugins/properties/enclosure/properties/enabled',
-                            type: 'boolean',
-                        },
-                        ambientSensorID: {
-                            $id: '#/properties/plugins/properties/enclosure/properties/ambientSensorID',
-                            type: ['number', 'null'],
-                            pattern: '^(.*)$',
-                        },
-                        filament1SensorID: {
-                            $id: '#/properties/plugins/properties/enclosure/properties/filament1SensorID',
-                            type: ['number', 'null'],
-                            pattern: '^(.*)$',
-                        },
-                        filament2SensorID: {
-                            $id: '#/properties/plugins/properties/enclosure/properties/filament2SensorID',
-                            type: ['number', 'null'],
-                            pattern: '^(.*)$',
-                        },
-                    },
-                },
-                filamentManager: {
-                    $id: '#/properties/plugins/properties/filamentManager',
-                    type: 'object',
-                    required: ['enabled'],
-                    properties: {
-                        enabled: {
-                            $id: '#/properties/plugins/properties/filamentManager/properties/enabled',
-                            type: 'boolean',
-                        },
-                    },
-                },
-                preheatButton: {
-                    $id: '#/properties/plugins/properties/preheatButton',
-                    type: 'object',
-                    required: ['enabled'],
-                    properties: {
-                        enabled: {
-                            $id: '#/properties/plugins/properties/preheatButton/properties/enabled',
-                            type: 'boolean',
-                        },
-                    },
-                },
-                printTimeGenius: {
-                    $id: '#/properties/plugins/properties/printTimeGenius',
-                    type: 'object',
-                    required: ['enabled'],
-                    properties: {
-                        enabled: {
-                            $id: '#/properties/plugins/properties/printTimeGenius/properties/enabled',
-                            type: 'boolean',
-                        },
-                    },
-                },
-                psuControl: {
-                    $id: '#/properties/plugins/properties/psuControl',
-                    type: 'object',
-                    required: ['enabled', 'turnOnPSUWhenExitingSleep'],
-                    properties: {
-                        enabled: {
-                            $id: '#/properties/plugins/properties/printTimeGenius/properties/enabled',
-                            type: 'boolean',
-                        },
-                        turnOnPSUWhenExitingSleep: {
-                            $id: '#/properties/octodash/properties/turnOnPSUWhenExitingSleep',
-                            type: 'boolean',
-                        },
-                    },
-                },
-            },
-        },
         octodash: {
             $id: '#/properties/octodash',
             type: 'object',
-            required: ['customActions', 'fileSorting', 'pollingInterval', 'touchscreen', 'turnScreenOffWhileSleeping'],
+            required: ['customActions', 'fileSorting', 'pollingInterval', 'turnScreenOffWhileSleeping'],
             properties: {
                 customActions: {
                     $id: '#/properties/octodash/properties/customActions',
@@ -593,10 +463,6 @@ const schema = {
                 pollingInterval: {
                     $id: '#/properties/octodash/properties/pollingInterval',
                     type: 'integer',
-                },
-                touchscreen: {
-                    $id: '#/properties/octodash/properties/touchscreen',
-                    type: 'boolean',
                 },
                 turnScreenOffWhileSleeping: {
                     $id: '#/properties/octodash/properties/turnScreenOffWhileSleeping',

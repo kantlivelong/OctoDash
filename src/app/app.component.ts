@@ -19,11 +19,7 @@ export class AppComponent {
         if (this.configService && this.configService.isInitialized()) {
             if (this.configService.isLoaded()) {
                 if (this.configService.isValid()) {
-                    if (this.configService.isTouchscreen()) {
-                        this.router.navigate(['/main-screen']);
-                    } else {
-                        this.router.navigate(['/main-screen-no-touch']);
-                    }
+                    this.router.navigate(['/main-screen']);
                 } else {
                     if (_.isEqual(this.configService.getErrors(), this.service.getUpdateError())) {
                         if (this.service.autoFixError()) {

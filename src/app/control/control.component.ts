@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 
 import { ConfigService } from '../config/config.service';
 import { OctoprintService } from '../octoprint.service';
-import { PsuControlService } from '../plugin-service/psu-control.service';
 import { PrinterService } from '../printer.service';
 
 @Component({
@@ -23,7 +22,6 @@ export class ControlComponent {
         private printerService: PrinterService,
         private octoprintService: OctoprintService,
         private configService: ConfigService,
-        private psuControlService: PsuControlService,
         private router: Router,
     ) {
         this.customActions = this.configService.getCustomActions();
@@ -84,15 +82,6 @@ export class ControlComponent {
                 break;
             case '[!KILL]':
                 this.kill();
-                break;
-            case '[!POWEROFF]':
-                this.psuControlService.changePSUState(false);
-                break;
-            case '[!POWERON]':
-                this.psuControlService.changePSUState(true);
-                break;
-            case '[!POWERTOGGLE]':
-                this.psuControlService.togglePSU();
                 break;
             default: {
                 if (command.includes('[!WEB]')) {

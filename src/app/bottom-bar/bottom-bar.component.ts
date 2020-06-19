@@ -2,7 +2,6 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { ConfigService } from '../config/config.service';
-import { EnclosureService } from '../plugin-service/enclosure.service';
 import { PrinterService, PrinterStatusAPI } from '../printer.service';
 
 @Component({
@@ -13,22 +12,11 @@ import { PrinterService, PrinterStatusAPI } from '../printer.service';
 export class BottomBarComponent implements OnDestroy {
     private subscriptions: Subscription = new Subscription();
     public printer: Printer;
-    public enclosureTemperature: TemperatureReading;
 
     public constructor(
         private printerService: PrinterService,
         private configService: ConfigService,
-        private enclosureService: EnclosureService,
     ) {
-        if (this.configService.getAmbientTemperatureSensorName() !== null) {
-            this.subscriptions.add(
-                this.enclosureService.getObservable().subscribe((temperatureReading: TemperatureReading): void => {
-                    this.enclosureTemperature = temperatureReading;
-                }),
-            );
-        } else {
-            this.enclosureTemperature = null;
-        }
         this.printer = {
             name: this.configService.getPrinterName(),
             status: 'connecting ...',
@@ -48,10 +36,4 @@ export class BottomBarComponent implements OnDestroy {
 interface Printer {
     name: string;
     status: string;
-}
-
-export interface TemperatureReading {
-    temperature: number;
-    humidity: number;
-    unit: string;
 }
