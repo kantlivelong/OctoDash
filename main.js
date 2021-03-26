@@ -57,6 +57,7 @@ function createWindow() {
       enableRemoteModule: true,
       worldSafeExecuteJavaScript: true,
       contextIsolation: false,
+      webSecurity: !dev
     },
     icon: path.join(__dirname, 'dist', 'assets', 'icon', 'icon.png'),
   });
