@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+. /usr/share/debconf/confmodule
+
+db_beginblock
+db_input high octodash/owning_user || true
+db_input high octodash/owning_group || true
+db_endblock
+db_go
+
+exit 0

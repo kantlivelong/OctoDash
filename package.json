@@ -42,25 +42,15 @@
         {
           "target": "deb",
           "arch": [
-            "armv7l",
-            "arm64",
-            "x64"
-          ]
-        },
-        {
-          "target": "tar.gz",
-          "arch": [
-            "armv7l",
-            "arm64",
-            "x64"
+            "armv7l"
           ]
         }
       ],
       "category": "Utility"
     },
-    "deb": [
+    "deb": {
       "synopsis": "Initial install package for OctoDash.",
-      "synopsis": "The Debian packages provided are used to perform system level changes. However the built-in updater is used for subsequent application updates. The package itself is only updated if changes are made to the required dependencies or install/configuration scripts.",
+      "description": "The Debian packages provided are used to perform system level changes. However the built-in updater is used for subsequent application updates. The package itself is only updated if changes are made to the required dependencies or install/configuration scripts.",
       "depends": [
         "bc",
         "desktop-file-utils",
@@ -82,12 +72,15 @@
         "xinit",
         "xserver-xorg"
       ],
-      "beforeInstall": "distribution/debian/preinst.tpl",
-      "afterInstall": "distribution/debian/postinst.tpl",
-      "afterRemove": "distribution/debian/postrm.tpl",
       "fpm": [
+        "--before-install=distribution/debian/preinst.tpl",
+        "--after-install=distribution/debian/postinst.tpl",
+	"--after-remove=distribution/debian/postrm.tpl",
+	"--no-deb-use-file-permissions",
         "--deb-systemd=distribution/debian/octodash.service",
         "--deb-systemd-restart-after-upgrade",
+	"--deb-config=distribution/debian/config",
+	"--deb-templates=distribution/debian/templates",
         "--config-files=/etc/default/octodash",
         "distribution/debian/octodash.default=/etc/default/octodash",
         "distribution/debian/octodash.xinit=/opt/OctoDash/"
