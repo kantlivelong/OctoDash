@@ -44,6 +44,12 @@
           "arch": [
             "armv7l"
           ]
+        },
+        {
+          "target": "tar.gz",
+          "arch": [
+            "armv7l"
+          ]
         }
       ],
       "category": "Utility"
