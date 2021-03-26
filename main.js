@@ -23,6 +23,11 @@ if (!dev) {
 
 app.commandLine.appendSwitch('touch-events', 'enabled');
 
+if (app.commandLine.hasSwitch('version')) {
+  console.log(app.getVersion());
+  app.quit();
+}
+
 let window;
 
 function createWindow() {
