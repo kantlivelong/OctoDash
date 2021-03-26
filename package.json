@@ -49,6 +49,38 @@
         }
       ],
       "category": "Utility"
+    },
+    "deb": {
+      "depends": [
+        "bc",
+        "desktop-file-utils",
+        "libappindicator3-1",
+        "libatspi2.0-0",
+        "libavahi-compat-libdnssd1",
+        "libgtk-3-0",
+        "libgtk-3-0",
+        "libnotify4",
+        "libnss3",
+        "libpam0g-dev",
+        "libsecret-1-0",
+        "libuuid1",
+        "libx11-dev",
+        "libxss1",
+        "libxtst6",
+        "x11-xserver-utils",
+        "xdg-utils",
+        "xinit",
+        "xserver-xorg"
+      ],
+      "afterInstall": "distribution/debian/postinst.tpl",
+      "afterRemove": "distribution/debian/postrm.tpl",
+      "fpm": [
+        "--deb-systemd=distribution/debian/octodash.service",
+        "--deb-systemd-restart-after-upgrade",
+        "--config-files=/etc/default/octodash",
+        "distribution/debian/octodash.default=/etc/default/octodash",
+        "distribution/debian/octodash.xinit=/opt/OctoDash/"
+      ]
     }
   },
   "scripts": {

@@ -1,0 +1,7 @@
+# Configuration for OctoDash
+
+# User to run OctoDash as. This will generally will be the same as OctoPrint
+OCTODASH_USER=pi
+
+# Specify the VT to run on. default is auto-detect
+OCTODASH_VT=
