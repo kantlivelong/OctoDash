@@ -58,7 +58,9 @@
       ],
       "category": "Utility"
     },
-    "deb": {
+    "deb": [
+      "synopsis": "Initial install package for OctoDash.",
+      "synopsis": "The Debian packages provided are used to perform system level changes. However the built-in updater is used for subsequent application updates. The package itself is only updated if changes are made to the required dependencies or install/configuration scripts.",
       "depends": [
         "bc",
         "desktop-file-utils",
@@ -80,6 +82,7 @@
         "xinit",
         "xserver-xorg"
       ],
+      "beforeInstall": "distribution/debian/preinst.tpl",
       "afterInstall": "distribution/debian/postinst.tpl",
       "afterRemove": "distribution/debian/postrm.tpl",
       "fpm": [
