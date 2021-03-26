@@ -12,6 +12,6 @@ chmod -R 775 /opt/OctoDash
 
 if [ ! -e /usr/bin/octodash ]; then ln -s /opt/OctoDash/octodash /usr/bin/octodash; fi
 
-sed -i 's/^#*allowed_users=.*$/allowed_users=anybody/g' /etc/X11/Xwrapper.config
+sed -i "s/^#*allowed_users=\w*$/allowed_users=anybody/g" /etc/X11/Xwrapper.config
 
 systemctl set-default graphical.target
