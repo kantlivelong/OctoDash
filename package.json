@@ -73,9 +73,9 @@
         "xserver-xorg"
       ],
       "fpm": [
-        "--before-install=distribution/debian/preinst.tpl",
-        "--after-install=distribution/debian/postinst.tpl",
-	"--after-remove=distribution/debian/postrm.tpl",
+        "--before-install=distribution/debian/before-isntall.tpl",
+        "--after-install=distribution/debian/after-install.tpl",
+	"--after-remove=distribution/debian/before-remove.tpl",
 	"--no-deb-use-file-permissions",
         "--deb-systemd=distribution/debian/octodash.service",
         "--deb-systemd-restart-after-upgrade",
