@@ -8,7 +8,7 @@ Wants=network-online.target
 Type=simple
 EnvironmentFile=-/etc/default/octodash
 Environment=DISPLAY=:0.0
-Environment=XINITRC=/opt/OctoDash/octodash.xinit
+Environment=XINITRC=/etc/X11/xinit/octodash.xinit
 ExecStart=/bin/su $OCTODASH_USER -w DISPLAY,XINITRC -l -c '/usr/bin/xinit -- -nocursor'
 ExecStop=/bin/kill -TERM $MAINPID
 TimeoutStopSec=30

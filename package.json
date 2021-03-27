@@ -73,6 +73,7 @@
         "libx11-dev",
         "libxss1",
         "libxtst6",
+        "rsync",
         "x11-xserver-utils",
         "xdg-utils",
         "xinit",
@@ -81,16 +82,16 @@
       "fpm": [
         "--before-install=distribution/debian/before-install.tpl",
         "--after-install=distribution/debian/after-install.tpl",
-	"--after-upgrade=distribution/debian/after-upgrade.tpl",
-	"--after-remove=distribution/debian/after-remove.tpl",
-	"--no-deb-use-file-permissions",
+        "--after-upgrade=distribution/debian/after-upgrade.tpl",
+        "--after-remove=distribution/debian/after-remove.tpl",
+        "--no-deb-use-file-permissions",
         "--deb-systemd=distribution/debian/octodash.service",
         "--deb-systemd-restart-after-upgrade",
-	"--deb-config=distribution/debian/config",
-	"--deb-templates=distribution/debian/templates",
+        "--deb-config=distribution/debian/config",
+        "--deb-templates=distribution/debian/templates",
         "--config-files=/etc/default/octodash",
         "distribution/debian/octodash.default=/etc/default/octodash",
-        "distribution/debian/octodash.xinit=/opt/OctoDash/"
+        "distribution/debian/octodash.xinit=/etc/X11/xinit/octodash.xinit"
       ]
     }
   },
@@ -131,6 +132,7 @@
     "angular-svg-round-progressbar": "^6.0.0",
     "bonjour": "^3.5.0",
     "compare-versions": "^3.6.0",
+    "electron-root-path": "^1.0.16",
     "electron-store": "^7.0.2",
     "got": "^11.8.2",
     "lodash-es": "^4.17.21",
